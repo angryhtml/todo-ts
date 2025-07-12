@@ -43,6 +43,9 @@ function createTodo(todo) {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = todo.completed;
+    if (todo.completed) {
+        newLi.classList.add('checked');
+    }
     checkbox.addEventListener('change', function () {
         todo.completed = checkbox.checked;
         if (checkbox.checked) {

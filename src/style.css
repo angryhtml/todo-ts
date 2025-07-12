@@ -21,13 +21,31 @@ input[type="checkbox"] {
 }
 
 li.checked {
-    text-decoration: line-through;    
+    text-decoration: line-through;
 }
 
 #todolist li {
     font-size: 18px;
     display: flex;
     align-items: center;
-    gap: 8px; 
+    gap: 8px;
     background-color: rgba(203, 235, 255, 0.5);
-  }
+}
+
+:root {
+    --bg-color: white;
+    --text-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #121212;
+        --text-color: #f5f5f5;
+    }
+}
+
+html {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}

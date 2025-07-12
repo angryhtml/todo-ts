@@ -11,6 +11,7 @@ const btnClear = document.getElementById('btn-clear')! as HTMLButtonElement;
 
 const todos: Todo[] = readTodos();
 todos.forEach(createTodo);
+updateClearButton();
 
 function readTodos(): Todo[] {
     const todosJSON = localStorage.getItem('todos');
@@ -34,6 +35,7 @@ function handleSubmit(e: Event): void {
         todos.push(newTodo);
         saveTodos();
         input.value = '';
+        updateClearButton();
     }
 }
 function handleClear(e: MouseEvent): void {
@@ -41,6 +43,7 @@ function handleClear(e: MouseEvent): void {
     list.replaceChildren();
     todos.length = 0;
     localStorage.removeItem('todos');
+    updateClearButton();
 
 }
 
@@ -62,9 +65,13 @@ function createTodo(todo: Todo) {
         }
         saveTodos();
     })
-    newLi.append(todo.text);
     newLi.append(checkbox);
+    newLi.append(todo.text);
     list.append(newLi);
+}
+
+function updateClearButton(): void {
+    btnClear.disabled = todos.length === 0;
 }
 
 form.addEventListener('submit', handleSubmit);

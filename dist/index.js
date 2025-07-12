@@ -6,6 +6,7 @@ const list = document.getElementById('todolist');
 const btnClear = document.getElementById('btn-clear');
 const todos = readTodos();
 todos.forEach(createTodo);
+updateClearButton();
 function readTodos() {
     const todosJSON = localStorage.getItem('todos');
     if (todosJSON === null)
@@ -27,6 +28,7 @@ function handleSubmit(e) {
         todos.push(newTodo);
         saveTodos();
         input.value = '';
+        updateClearButton();
     }
 }
 function handleClear(e) {
@@ -34,6 +36,7 @@ function handleClear(e) {
     list.replaceChildren();
     todos.length = 0;
     localStorage.removeItem('todos');
+    updateClearButton();
 }
 function createTodo(todo) {
     const newLi = document.createElement('li');
@@ -54,9 +57,12 @@ function createTodo(todo) {
         }
         saveTodos();
     });
-    newLi.append(todo.text);
     newLi.append(checkbox);
+    newLi.append(todo.text);
     list.append(newLi);
+}
+function updateClearButton() {
+    btnClear.disabled = todos.length === 0;
 }
 form.addEventListener('submit', handleSubmit);
 btnClear.addEventListener('click', handleClear);

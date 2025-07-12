@@ -7,6 +7,7 @@ const btn = document.getElementById('btn')! as HTMLButtonElement;
 const input = document.getElementById('todoinput')! as HTMLInputElement;
 const form = document.getElementById('formtodo')!;
 const list = document.getElementById('todolist')!;
+const btnClear = document.getElementById('btn-clear')! as HTMLButtonElement;
 
 const todos: Todo[] = readTodos();
 todos.forEach(createTodo);
@@ -27,10 +28,20 @@ function handleSubmit(e: Event): void {
         text: input.value,
         completed: false,
     };
-    createTodo(newTodo);
-    todos.push(newTodo);
-    saveTodos();
-    input.value = '';
+    const onlySpaces: boolean = !newTodo.text.trim().length;
+    if (newTodo.text != '' && !onlySpaces) {
+        createTodo(newTodo);
+        todos.push(newTodo);
+        saveTodos();
+        input.value = '';
+    }
+}
+function handleClear(e: MouseEvent): void {
+    e.preventDefault();
+    list.replaceChildren();
+    todos.length = 0;
+    localStorage.removeItem('todos');
+
 }
 
 function createTodo(todo: Todo) {
@@ -48,3 +59,4 @@ function createTodo(todo: Todo) {
 }
 
 form.addEventListener('submit', handleSubmit);
+btnClear.addEventListener('click', handleClear);

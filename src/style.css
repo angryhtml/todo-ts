@@ -1,0 +1,26 @@
+h1 {
+    font-size: 23px;
+}
+
+button {
+    width: auto;
+    height: 30px !important;
+}
+
+li {
+    width: fit-content;
+    background-color: rgba(203, 235, 255, 0.5);
+    margin-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-radius: 5px;
+}
+
+input[type="checkbox"] {
+    margin-left: 5px !important;
+    transform: scale(1.3)
+}
+
+#btn-clear {
+
+}

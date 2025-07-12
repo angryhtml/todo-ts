@@ -4,16 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="src/style.css">
     <title>Todo TS</title>
 </head>
 
 <body>
-    <h1>My todo list:</h1>
-    <form id="formtodo" action="">
-        <input id="todoinput" type="text" placeholder="Enter a todo">
-        <button id="btn" type="submit">Click me!</button>
-    </form>
-    <ul id="todolist"></ul>
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-three-quarters mt-5 ">
+                <h1 class="mb-2">Create your todo list:</h1>
+                <form id="formtodo" action="">
+                    <input id="todoinput" class="input is-info" type="text" placeholder="Enter a todo">
+                    <button id="btn" class="button is-info mt-2" type="submit">Add new task</button>
+                    <button id="btn-clear" class="button is-danger mt-2">Clear All</button>
+                </form>
+                <ul id="todolist"></ul>
+            </div>
+        </div>
+    </div>
+
 
     <script src="dist/index.js"></script>
 </body>

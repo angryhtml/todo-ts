@@ -30,7 +30,7 @@ li.checked {
     align-items: center;
     gap: 8px;
     background-color: rgba(203, 235, 255, 0.55);
-    transition: transform 300ms ease;
+    transition: transform 600ms ease !important;
 }
 
 :root {
@@ -53,4 +53,16 @@ html {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
+}
+
+/* Добавляем в CSS */
+.todo-item {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.todo-item.visible {
+    opacity: 1;
+    transform: translateY(0);
 }

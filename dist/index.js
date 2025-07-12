@@ -40,6 +40,7 @@ function handleClear(e) {
 }
 function createTodo(todo) {
     const newLi = document.createElement('li');
+    newLi.classList.add('todo-item');
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = todo.completed;
@@ -63,6 +64,9 @@ function createTodo(todo) {
     newLi.append(checkbox);
     newLi.append(todo.text);
     list.append(newLi);
+    requestAnimationFrame(() => {
+        newLi.classList.add('visible');
+    });
 }
 function updateClearButton() {
     btnClear.disabled = todos.length === 0;

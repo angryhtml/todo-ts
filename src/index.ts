@@ -49,6 +49,8 @@ function handleClear(e: MouseEvent): void {
 
 function createTodo(todo: Todo) {
     const newLi = document.createElement('li');
+    newLi.classList.add('todo-item');
+
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = todo.completed;
@@ -73,6 +75,10 @@ function createTodo(todo: Todo) {
     newLi.append(checkbox);
     newLi.append(todo.text);
     list.append(newLi);
+
+    requestAnimationFrame(() => {
+        newLi.classList.add('visible');
+    });
 }
 
 function updateClearButton(): void {

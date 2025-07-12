@@ -42,6 +42,16 @@ function createTodo(todo) {
     checkbox.checked = todo.completed;
     checkbox.addEventListener('change', function () {
         todo.completed = checkbox.checked;
+        if (checkbox.checked) {
+            newLi.classList.add('checked');
+            list.append(newLi);
+        }
+        else {
+            newLi.classList.remove('checked');
+            const firstCompleted = [...list.children]
+                .find(li => { var _a; return (_a = li.querySelector('input')) === null || _a === void 0 ? void 0 : _a.checked; });
+            list.insertBefore(newLi, firstCompleted || null);
+        }
         saveTodos();
     });
     newLi.append(todo.text);
